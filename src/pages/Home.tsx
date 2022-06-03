@@ -41,13 +41,13 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-    Alert.alert("Remover item", "Tem certeza que você deseja remover esse item?", [
+    Alert.alert("Remover item", "Tem certeza que você deseja remover esse item?", [ 
+      {
+        text: "Não"
+      },
       {
         text: "Sim",
         onPress:() => setTasks((oldState) => oldState.filter((todo) => todo.id !== id))
-      },
-      {
-        text: "Não"
       }
     ])
    
