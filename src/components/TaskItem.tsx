@@ -18,7 +18,7 @@ interface TaskItemProps {
   index: number;
   toggleTaskDone: (id: number) => void;
   removeTask: (id: number) => void;
-  editTask: (taskId: number, taskNewTitle: string) => void;
+  editTask: (taskId: number, taskNewTitle: string) => boolean;
 }
 
 export function TaskItem({
@@ -34,7 +34,10 @@ export function TaskItem({
   const textInputRef = useRef<TextInput | null>(null);
 
   function handleEditTask() {
-    editTask(task.id, newTaskTitle)
+    const edited = editTask(task.id, newTaskTitle)
+    if(!edited){
+      setNewTaskTitle(task.title)
+    }
     setIsEditing(false)
   }
 
